@@ -34,27 +34,31 @@ export default function App() {
         />
         <Button title="Submit" onPress={handleSubmit} />
       </View>
-      <FlatList
-        style={styles.flatList}
-        data={todos}
-        renderItem={({ item }) => <Text>{item.text}</Text>}
-        keyExtractor={(item, index) => item.id} // Use the UUID as the key
-      />
+      <View style={styles.flatListContainer}>
+        <FlatList
+          data={todos}
+          renderItem={({ item }) => (
+            <Text style={styles.flatListItem}>{item.text}</Text>
+          )}
+          keyExtractor={(item, index) => item.id} // Use the UUID as the key
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 30 },
+  container: { flex: 1, padding: 30, paddingTop: 60 },
   inputContainer: {
+    flex: 0,
     flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 20,
+    justifyContent: "center",
   },
   input: {
+    flex: 1,
     borderBottomWidth: 1,
     borderColor: "black",
-    width: "80%",
   },
-  flatList: { flex: 5 },
+  flatListContainer: { flex: 1, marginTop: 20 },
+  flatListItem: { marginBottom: 10 },
 });
