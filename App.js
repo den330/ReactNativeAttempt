@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid"; // Import UUID
 import {
   StyleSheet,
   Text,
@@ -7,7 +9,6 @@ import {
   TextInput,
   FlatList,
 } from "react-native";
-import { v4 as uuidv4 } from "uuid"; // Import UUID
 
 export default function App() {
   const [todos, setTodos] = useState([]);
