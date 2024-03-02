@@ -1,35 +1,57 @@
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  FlatList,
+} from "react-native";
+import { v4 as uuidv4 } from "uuid"; // Import UUID
 
 export default function App() {
+  const [todos, setTodos] = useState([]);
+  const [inputText, setInputText] = useState("");
+
+  function handleSubmit() {
+    if (inputText.trim() !== "") {
+      // Create a new todo object with a UUID
+      const newTodo = { id: uuidv4(), text: inputText };
+      setTodos([...todos, newTodo]);
+      setInputText("");
+    }
+  }
+
   return (
     <View style={styles.container}>
-      <View style={styles.flexHol}>
-        <TextInput style={styles.input} placeholder="Enter your Goal" />
-        <Button style={styles.btn} title="Submit" />
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Enter todo"
+          style={styles.input}
+          onChangeText={setInputText}
+          value={inputText}
+        />
+        <Button title="Submit" onPress={handleSubmit} />
       </View>
-      <View>
-        <Text> List of Goals</Text>
-      </View>
+      <FlatList
+        data={todos}
+        renderItem={({ item }) => <Text>{item.text}</Text>}
+        keyExtractor={(item) => item.id} // Use the UUID as the key
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    // alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-  },
-  flexHol: {
-    flex: 1,
+  container: { flex: 1, padding: 30 },
+  inputContainer: {
     flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 20,
   },
   input: {
-    flex: 0,
+    borderBottomWidth: 1,
+    borderColor: "black",
+    width: "80%",
   },
-  btn: { flex: 0 },
 });
