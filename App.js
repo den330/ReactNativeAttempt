@@ -34,9 +34,10 @@ export default function App() {
         <Button title="Submit" onPress={handleSubmit} />
       </View>
       <FlatList
+        style={styles.flatList}
         data={todos}
         renderItem={({ item }) => <Text>{item.text}</Text>}
-        keyExtractor={(item) => item.id} // Use the UUID as the key
+        keyExtractor={(item, index) => item.id} // Use the UUID as the key
       />
     </View>
   );
@@ -54,4 +55,5 @@ const styles = StyleSheet.create({
     borderColor: "black",
     width: "80%",
   },
+  flatList: { flex: 5 },
 });
