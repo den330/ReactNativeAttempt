@@ -10,7 +10,7 @@ function ToDoProvider({ children }) {
   function handleSubmit() {
     if (inputText.trim() !== "") {
       const newTodo = { id: uuidv4(), text: inputText };
-      setTodos([...todos, newTodo]);
+      setTodos((prevTodos) => [...prevTodos, newTodo]);
       setInputText("");
     }
   }
