@@ -18,6 +18,6 @@ export default function FlatListView() {
 }
 
 const styles = StyleSheet.create({
-  flatListContainer: { flex: 5, marginTop: 20 },
+  flatListContainer: { flex: 1, marginTop: 20 },
   flatListItem: { marginBottom: 10, color: "purple" },
 });
