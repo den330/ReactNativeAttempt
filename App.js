@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid"; // Import UUID
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TextInput,
-  FlatList,
-} from "react-native";
+import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import FlatListView from "./FlatList";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
@@ -34,15 +28,7 @@ export default function App() {
         />
         <Button title="Submit" onPress={handleSubmit} />
       </View>
-      <View style={styles.flatListContainer}>
-        <FlatList
-          data={todos}
-          renderItem={({ item }) => (
-            <Text style={styles.flatListItem}>{item.text}</Text>
-          )}
-          keyExtractor={(item, index) => item.id} // Use the UUID as the key
-        />
-      </View>
+      <FlatListView todos={todos} />
     </View>
   );
 }
@@ -59,6 +45,4 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: "black",
   },
-  flatListContainer: { flex: 1, marginTop: 20 },
-  flatListItem: { marginBottom: 10 },
 });
