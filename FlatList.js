@@ -1,9 +1,9 @@
 import { StyleSheet, FlatList, View, Text } from "react-native";
 import { useContext } from "react";
-import { ToDoContext } from "./ToDoContext";
+import { useToDoContext } from "./ToDoContext";
 
 export default function FlatListView() {
-  const { todos } = useContext(ToDoContext);
+  const { todos } = useToDoContext();
   return (
     <View style={styles.flatListContainer}>
       <FlatList

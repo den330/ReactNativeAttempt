@@ -1,8 +1,15 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 
 const ToDoContext = createContext();
+const useToDoContext = () => {
+  const context = useContext(ToDoContext);
+  if (!context) {
+    throw new Error("useToDoContext must be used within a ToDoProvider");
+  }
+  return context;
+};
 
 function ToDoProvider({ children }) {
   const [todos, setTodos] = useState([]);
@@ -23,4 +30,4 @@ function ToDoProvider({ children }) {
   );
 }
 
-export { ToDoContext, ToDoProvider };
+export { useToDoContext, ToDoProvider };
