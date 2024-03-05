@@ -23,7 +23,7 @@ function ToDoProvider({ children }) {
   }
   return (
     <ToDoContext.Provider
-      value={{ todos, inputText, setInputText, handleSubmit }}
+      value={{ todos, inputText, setInputText, handleSubmit, setTodos }}
     >
       {children}
     </ToDoContext.Provider>
