@@ -1,5 +1,4 @@
 import { Button, TextInput, View, StyleSheet } from "react-native";
-import { useContext } from "react";
 import { useToDoContext } from "./ToDoContext";
 
 export default function InputContainer() {

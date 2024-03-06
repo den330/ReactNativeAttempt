@@ -1,5 +1,4 @@
 import { StyleSheet, FlatList, View, Text, Pressable } from "react-native";
-import { useContext } from "react";
 import { useToDoContext } from "./ToDoContext";
 
 export default function FlatListView() {
